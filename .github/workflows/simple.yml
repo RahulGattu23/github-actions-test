@@ -24,5 +24,8 @@ jobs:
       - name: Directory powershell
         run: Get-Location
       - name: Directory bash
-        run: pwd
+        run: |
+          pwd
+          echo COMPLETED
         shell: bash
+    
