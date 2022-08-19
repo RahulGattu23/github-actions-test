@@ -4,8 +4,23 @@ on:
   # schedule: 
   #   - cron: "* * * * *"  #each asterisk represents an instance in time like minute, hour, day of month, etc
   # push:
-  repository_dispatch:
-    types: [build]
+  # repository_dispatch:
+  #   types: [build]
+  push:
+    branches:
+      - main
+      - 'feature/*'  #runs on feature/featA, feature/featB, etc
+      - 'feature/**'  #runs on feature/featA/imp, etc
+    # branches-ignore:
+    #   - ""
+      # - '!feature/featC'  #to ignore branches if you have branches: keyword already
+    tags:
+      - v1.*
+    paths:
+      - "**.js"  #will run any js file in the directory
+      - '!filename.js'  #will run all except filename.js
+    # paths-ignore:
+    #   - "docs/**"
   pull_request:
     types: [closed, opened, assigned, reopened, synchronize]
     
