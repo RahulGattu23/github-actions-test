@@ -4,7 +4,7 @@ on: [push]
 jobs:
   function:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push'
     steps:
       - name: dump
         run: |
@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: eccho '${{ toJSON(github) }}'
+        run: echo '${{ toJSON(github) }}'
       - name: Dump job context
         if: failure()
         run: echo '${{ toJSON(job) }}'
