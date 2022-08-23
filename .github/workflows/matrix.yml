@@ -8,19 +8,19 @@ jobs:
       matrix:
         node_version: [6, 8, 14]
         os: ['macos_latest', 'ubuntu-latest', 'windows-latest']
-        include:
-          - node_version: 8
-            os: ubuntu_latest
-            is_ubuntu_8: "true"   #using 'includes:', we can add an extra variable to our matrix context  
-        exclude: 
-          - node_version: 8
-            os: macos_latest
-          - node_version: 14
-            os: windows_latest
+        # include:
+        #   - node_version: 8
+        #     os: ubuntu_latest
+        #     is_ubuntu_8: "true"   #using 'includes:', we can add an extra variable to our matrix context  
+        # exclude: 
+        #   - node_version: 8
+        #     os: macos_latest
+        #   - node_version: 14
+        #     os: windows_latest
       fail-fast: true
     runs-on: ${{ matrix.os }}
-    env: 
-      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
+    # env: 
+    #   IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
     steps:
       - name: log default node-version
         run: node -v
@@ -30,4 +30,4 @@ jobs:
       - name: log node-version
         run: |
           node -v
-          echo $IS_UBUNTU_8
+        #  echo $IS_UBUNTU_8
